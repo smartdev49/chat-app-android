@@ -88,11 +88,6 @@ const Home = ({navigation}: Props) => {
                 }, {height: inputHeight},
                 ]}
                 placeholderTextColor={'#818898'}
-                onContentSizeChange={(event) => {             
-                    const { height } = event.nativeEvent.contentSize;
-                    setInputHeight(height);
-                    console.log("content height:", height)
-                }}
                 />
             <TouchableOpacity style={styles.submit_button} onPress={()=>{                    
               }} >
@@ -200,11 +195,11 @@ const styles = StyleSheet.create({
     paddingLeft: 20, 
     gap: 12, },
   button_group: {
-      flexDirection: "row",
-      borderRadius: 999,
-      padding: 4,
-      backgroundColor: "#FFFFFF",
-      marginTop: 12,
+    flexDirection: "row",
+    borderRadius: 999,
+    padding: 4,
+    backgroundColor: "#FFFFFF",
+    marginTop: 12,
   },
   modal: {
     flex: 1,
