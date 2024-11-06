@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Image, StyleSheet, Button } from "react-native";
+import { View, Text, TouchableOpacity, Image, StyleSheet, Button, Pressable, TextInput } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { router } from "../router";
 import Modal from "react-native-modal";
+import { MaterialIcons } from "@expo/vector-icons";
 
 type Props = NativeStackScreenProps<router, "Home">;
 
 const Home = ({navigation}: Props) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [inputHeight, setInputHeight] = useState(40);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -67,8 +69,27 @@ const Home = ({navigation}: Props) => {
         animationOut="slideOutDown"
         backdropOpacity={0.5}>
           <View style={styles.modalContent}>
-            <Text>Hello</Text>
-            <Button title="Close Dialog" onPress={toggleModal} />
+            <TouchableOpacity onPress={toggleModal} style={styles.close_button}>
+                <MaterialIcons name="close" size={24} color={'#666D80'}/>
+            </TouchableOpacity>
+            <TextInput multiline={true} placeholder="|Start typing prompt here..." 
+                style={[{
+                    width: '100%',
+                    paddingTop: 16,
+                    paddingBottom: 16,
+                    paddingLeft: 20,
+                    paddingRight: 20,
+                    fontSize: 16,
+                    color: "#ffffff",
+                }, {height: inputHeight},
+                ]}
+                placeholderTextColor={'#818898'}
+                onContentSizeChange={(event) => {             
+                    const { height } = event.nativeEvent.contentSize;
+                    setInputHeight(height);
+                    console.log("content height:", height)
+                }}
+                />
           </View>
         </Modal>
     </View>
@@ -165,14 +186,24 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     margin: 0,
     marginTop: 50,
+    backgroundColor: "#00000040",
   },
   modalContent: {
-    backgroundColor: 'white',
-    padding: 22,
-    borderTopLeftRadius: 17,
-    borderTopRightRadius: 17,
-    borderColor: 'rgba(0, 0, 0, 0.1)',
-    height: "100%",
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#0D0D12',
+    paddingTop: 20,
+    paddingBottom: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    gap: 12,
   },
+  close_button: {    
+    position: "absolute",
+    right: 25,
+    top: 25,
+  }
 
 });
