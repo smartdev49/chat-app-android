@@ -30,7 +30,7 @@ export default function Home({navigation}: Props) {
         alignContent: "center", 
         alignItems: "center",
         }}>
-        <TouchableOpacity style={styles.capture_button} >
+        <TouchableOpacity style={styles.capture_button} onPress={() => navigation.navigate("Image")} >
           <SvgUri
             uri='../assets/svgs/camera.svg'
           />
