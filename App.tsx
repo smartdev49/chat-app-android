@@ -10,12 +10,12 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name='Image' component={ImageViewer} options={{
-          headerShown:false
-        }} />
         <Stack.Screen name='Home' component={Home} options={{
           headerShown:false
         }}/>
+        <Stack.Screen name='Image' component={ImageViewer} options={{
+          headerShown:false
+        }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

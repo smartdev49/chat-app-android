@@ -1,12 +1,19 @@
-import React from "react";
-import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, Image, StyleSheet, Button } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { router } from "../router";
-import { SvgUri } from "react-native-svg";
+import Modal from "react-native-modal";
 
 type Props = NativeStackScreenProps<router, "Home">;
 
 const Home = ({navigation}: Props) => {
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
   return (
     <View
       style={{
@@ -36,15 +43,11 @@ const Home = ({navigation}: Props) => {
           <Text style={styles.text}>OR</Text>
           <View style={styles.line}></View>
         </View>
+        <TouchableOpacity onPress={toggleModal}>
         <Text style={styles.prompt_label}>Start typing prompt here...</Text>
+        </TouchableOpacity>
       </View>
-      <View style={{
-        flexDirection: "row",
-        borderRadius: 999,
-        padding: 4,
-        backgroundColor: "#FFFFFF",
-        marginTop: 12,
-      }}>
+      <View style={styles.button_group}>
         <TouchableOpacity style={styles.search_button} >
           <Image source={require("../assets/images/homepage/search.png")}/>
         </TouchableOpacity> 
@@ -55,6 +58,19 @@ const Home = ({navigation}: Props) => {
           <Image source={require("../assets/images/homepage/user.png")}/>        
         </TouchableOpacity> 
       </View>
+      <Modal
+        isVisible={isModalVisible}
+        style={styles.modal}
+        swipeDirection="down"
+        onSwipeComplete={toggleModal}
+        animationIn="slideInUp"
+        animationOut="slideOutDown"
+        backdropOpacity={0.5}>
+          <View style={styles.modalContent}>
+            <Text>Hello</Text>
+            <Button title="Close Dialog" onPress={toggleModal} />
+          </View>
+        </Modal>
     </View>
   );
 }
@@ -136,6 +152,27 @@ const styles = StyleSheet.create({
     paddingRight: 20, 
     paddingBottom: 16, 
     paddingLeft: 20, 
-    gap: 12, }
+    gap: 12, },
+  button_group: {
+      flexDirection: "row",
+      borderRadius: 999,
+      padding: 4,
+      backgroundColor: "#FFFFFF",
+      marginTop: 12,
+  },
+  modal: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    margin: 0,
+    marginTop: 50,
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    padding: 22,
+    borderTopLeftRadius: 17,
+    borderTopRightRadius: 17,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+    height: "100%",
+  },
 
 });
