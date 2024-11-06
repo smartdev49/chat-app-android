@@ -20,7 +20,7 @@ export default function Home({navigation}: Props) {
       }}
     >
       <Image
-        source={require('@/assets/images/soda-pop.svg')} // Update the path to your image
+        source={require("../assets/svgs/logo.svg")} // Update the path to your image
         style={styles.image}
       />
       <Text style={{color: "#FFFFFF", fontSize: 24,}}>Hi, how can i help you?</Text>
@@ -32,7 +32,7 @@ export default function Home({navigation}: Props) {
         }}>
         <TouchableOpacity style={styles.capture_button} >
           <SvgUri
-            uri='/assets/images/camera.svg'
+            uri='../assets/svgs/camera.svg'
           />
           <Text style={{color:'#ffffff'}}>Upload Image</Text>
         </TouchableOpacity> 
@@ -52,19 +52,19 @@ export default function Home({navigation}: Props) {
       }}>
         <TouchableOpacity style={styles.search_button} >
           <SvgUri
-            uri='/assets/images/search.svg'
+            uri='../assets/svgs/search.svg'
             width={20} height={20}
           />
         </TouchableOpacity> 
         <TouchableOpacity style={styles.menu_button} >
           <SvgUri
-            uri='/assets/images/menu.svg'
+            uri='../assets/svgs/menu.svg'
             width={20} height={20}
           />
         </TouchableOpacity> 
         <TouchableOpacity style={styles.user_button} >
           <SvgUri
-            uri='/assets/images/user.svg'
+            uri='../assets/svgs/user.svg'
             width={20} height={20}
           />
         </TouchableOpacity> 
