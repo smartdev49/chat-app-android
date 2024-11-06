@@ -1,12 +1,21 @@
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { router } from './router';
+import { NavigationContainer } from '@react-navigation/native';
+import Home from './screens/Home';
+import ImageViewer from './screens/ImageViewer';
+
+const Stack = createNativeStackNavigator<router>();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name='Home' component={Home} />
+        <Stack.Screen name='Image' component={ImageViewer} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
