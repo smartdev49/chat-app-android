@@ -2,8 +2,8 @@ import React from "react";
 import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { router } from "../router";
-import { SvgUri } from "react-native-svg";
-
+import { SvgUri, SvgXml } from "react-native-svg";
+import { cameraSvg } from "../assets/svgs/camera";
 type Props = NativeStackScreenProps<router, "Home">;
 
 export default function Home({navigation}: Props) {
@@ -19,10 +19,7 @@ export default function Home({navigation}: Props) {
         paddingTop: 24,
       }}
     >
-      <Image
-        source={require("../assets/svgs/logo.svg")} // Update the path to your image
-        style={styles.image}
-      />
+      <SvgXml xml={cameraSvg} width={20} height={20} style={styles.image}/>
       <Text style={{color: "#FFFFFF", fontSize: 24,}}>Hi, how can i help you?</Text>
       <View style={{
         gap: 32, 
