@@ -2,11 +2,11 @@ import React from "react";
 import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { router } from "../router";
-import { SvgUri, SvgXml } from "react-native-svg";
-import { cameraSvg } from "../assets/svgs/camera";
+import { SvgUri } from "react-native-svg";
+
 type Props = NativeStackScreenProps<router, "Home">;
 
-export default function Home({navigation}: Props) {
+const Home = ({navigation}: Props) => {
   return (
     <View
       style={{
@@ -19,7 +19,7 @@ export default function Home({navigation}: Props) {
         paddingTop: 24,
       }}
     >
-      <SvgXml xml={cameraSvg} width={20} height={20} style={styles.image}/>
+      <Image source={require("../assets/images/logo.svg")}  style={styles.image}/>
       <Text style={{color: "#FFFFFF", fontSize: 24,}}>Hi, how can i help you?</Text>
       <View style={{
         gap: 32, 
@@ -28,9 +28,7 @@ export default function Home({navigation}: Props) {
         alignItems: "center",
         }}>
         <TouchableOpacity style={styles.capture_button} onPress={() => navigation.navigate("Image")} >
-          <SvgUri
-            uri='../assets/svgs/camera.svg'
-          />
+          <Image source={require("../assets/images/camera.svg")}/>
           <Text style={{color:'#ffffff'}}>Upload Image</Text>
         </TouchableOpacity> 
         <View style={styles.container}>
@@ -48,27 +46,20 @@ export default function Home({navigation}: Props) {
         marginTop: 12,
       }}>
         <TouchableOpacity style={styles.search_button} >
-          <SvgUri
-            uri='../assets/svgs/search.svg'
-            width={20} height={20}
-          />
+          <Image source={require("../assets/images/search.svg")}/>
         </TouchableOpacity> 
-        <TouchableOpacity style={styles.menu_button} >
-          <SvgUri
-            uri='../assets/svgs/menu.svg'
-            width={20} height={20}
-          />
+        <TouchableOpacity style={styles.menu_button} >        
+          <Image source={require("../assets/images/menu.svg")}/>  
         </TouchableOpacity> 
-        <TouchableOpacity style={styles.user_button} >
-          <SvgUri
-            uri='../assets/svgs/user.svg'
-            width={20} height={20}
-          />
+        <TouchableOpacity style={styles.user_button} >  
+          <Image source={require("../assets/images/user.svg")}/>        
         </TouchableOpacity> 
       </View>
     </View>
   );
 }
+
+export default Home;
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
