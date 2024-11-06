@@ -90,6 +90,19 @@ const Home = ({navigation}: Props) => {
                     console.log("content height:", height)
                 }}
                 />
+            <TouchableOpacity style={styles.submit_button} onPress={()=>{                    
+              }} >
+              <Text style={{
+                  fontSize: 14,
+                  lineHeight: 20,
+                  fontFamily: "Inter Tight",
+                  letterSpacing: 2,
+              }}>Submit</Text>
+              <Image
+              source={require('../assets/images/homepage/send-ai.png')}
+              width={20} height={20}
+              />
+            </TouchableOpacity>
           </View>
         </Modal>
     </View>
@@ -204,6 +217,20 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 25,
     top: 25,
-  }
+  },
+  submit_button: {
+    flexDirection: "row",
+    borderRadius: 100,
+    backgroundColor: '#33CFFF',
+    height: 52,
+    width: 335,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: 16,
+    paddingBottom: 16,
+    paddingLeft: 10,
+    paddingRight: 10,
+    gap: 12,
+}
 
 });
