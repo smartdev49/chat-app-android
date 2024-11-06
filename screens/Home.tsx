@@ -9,12 +9,16 @@ type Props = NativeStackScreenProps<router, "Home">;
 
 const Home = ({navigation}: Props) => {
   const [isModalVisible, setModalVisible] = useState(false);
+  const [isUploadModalVisible, setUploadModalVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [inputHeight, setInputHeight] = useState(40);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
+  const toggleUploadModal = () => {
+    setUploadModalVisible(!isUploadModalVisible);
+  }
 
   return (
     <View
@@ -36,7 +40,7 @@ const Home = ({navigation}: Props) => {
         alignContent: "center", 
         alignItems: "center",
         }}>
-        <TouchableOpacity style={styles.capture_button} onPress={() => navigation.navigate("Image")} >
+        <TouchableOpacity style={styles.capture_button} onPress={toggleUploadModal} >
           <Image source={require("../assets/images/homepage/camera.png")}/>
           <Text style={{color:'#ffffff'}}>Upload Image</Text>
         </TouchableOpacity> 
@@ -105,6 +109,13 @@ const Home = ({navigation}: Props) => {
               />
             </TouchableOpacity>
           </View>
+        </Modal>
+        <Modal isVisible={isUploadModalVisible} style={styles.upload_image_modal}>
+          <View style={styles.upload_button_container}>
+            <TouchableOpacity style={styles.upload_from_button}><Text style={{color: "#007AFF", fontSize: 18, fontWeight: "400"}}>Photo Gallery</Text></TouchableOpacity>
+            <TouchableOpacity style={[styles.upload_from_button, {borderColor: '#ffffff', borderTopWidth: 1,}]}><Text style={{color: "#007AFF", fontSize: 18, fontWeight: "400"}}>Camera</Text></TouchableOpacity>
+          </View>
+          <TouchableOpacity style={styles.upload_cancel_button} onPress={toggleUploadModal}><Text style={{color: "#007AFF", fontSize: 18, fontWeight: "bold"}}>Cancel</Text></TouchableOpacity>
         </Modal>
     </View>
   );
@@ -233,6 +244,31 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     gap: 12,
     marginBottom: 20,
-}
+  },
+  upload_image_modal: {
+    justifyContent: 'flex-end',
+    backgroundColor: "#00000040",
+    gap: 24,
+  },
+  upload_button_container: {
+    flexDirection: "column",
+    gap: 2, 
+    borderRadius: 10,
+    backgroundColor: "#FFFFFFCC",
+  },
+  upload_from_button: {
+    width: '100%' ,
+    alignContent: "center", 
+    alignItems: "center",
+    paddingVertical: 15,
+  },
+  upload_cancel_button: {
+    width: "100%",
+    alignContent: "center", 
+    alignItems: "center",
+    backgroundColor: "#FFFFFFE5",
+    borderRadius: 10,
+    paddingVertical: 15,
+  }
 
 });
