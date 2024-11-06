@@ -97,6 +97,7 @@ const Home = ({navigation}: Props) => {
                   lineHeight: 20,
                   fontFamily: "Inter Tight",
                   letterSpacing: 2,
+                  fontWeight: "bold",
               }}>Submit</Text>
               <Image
               source={require('../assets/images/homepage/send-ai.png')}
@@ -231,6 +232,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     gap: 12,
+    marginBottom: 20,
 }
 
 });
