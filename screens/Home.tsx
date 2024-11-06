@@ -88,6 +88,11 @@ const Home = ({navigation}: Props) => {
                 }, {height: inputHeight},
                 ]}
                 placeholderTextColor={'#818898'}
+                onContentSizeChange={(event) => {             
+                    const { height } = event.nativeEvent.contentSize;
+                    setInputHeight(height);
+                    console.log("content height:", height)
+                }}
                 />
             <TouchableOpacity style={styles.submit_button} onPress={()=>{                    
               }} >
