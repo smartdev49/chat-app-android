@@ -19,7 +19,7 @@ const Home = ({navigation}: Props) => {
         paddingTop: 24,
       }}
     >
-      <Image source={require("../assets/images/logo.svg")}  style={styles.image}/>
+      <Image source={require("../assets/images/homepage/logo.png")}  style={styles.image}/>
       <Text style={{color: "#FFFFFF", fontSize: 24,}}>Hi, how can i help you?</Text>
       <View style={{
         gap: 32, 
@@ -28,7 +28,7 @@ const Home = ({navigation}: Props) => {
         alignItems: "center",
         }}>
         <TouchableOpacity style={styles.capture_button} onPress={() => navigation.navigate("Image")} >
-          <Image source={require("../assets/images/camera.svg")}/>
+          <Image source={require("../assets/images/homepage/camera.png")}/>
           <Text style={{color:'#ffffff'}}>Upload Image</Text>
         </TouchableOpacity> 
         <View style={styles.container}>
@@ -46,13 +46,13 @@ const Home = ({navigation}: Props) => {
         marginTop: 12,
       }}>
         <TouchableOpacity style={styles.search_button} >
-          <Image source={require("../assets/images/search.svg")}/>
+          <Image source={require("../assets/images/homepage/search.png")}/>
         </TouchableOpacity> 
         <TouchableOpacity style={styles.menu_button} >        
-          <Image source={require("../assets/images/menu.svg")}/>  
+          <Image source={require("../assets/images/homepage/list.png")}/>  
         </TouchableOpacity> 
         <TouchableOpacity style={styles.user_button} >  
-          <Image source={require("../assets/images/user.svg")}/>        
+          <Image source={require("../assets/images/homepage/user.png")}/>        
         </TouchableOpacity> 
       </View>
     </View>
